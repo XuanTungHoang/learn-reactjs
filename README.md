@@ -1,7 +1,5 @@
-# Hello these, Welcome to my GitHub
+## Hello, Welcome to my GIT
 
+## In this repo I will learn REACTJS 
 
-## This repo to learn reactjs
-
-
-Follow me !
+## FOLLOW ME !
