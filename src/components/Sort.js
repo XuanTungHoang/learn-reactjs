@@ -12,7 +12,6 @@ class Sort extends Component {
   }
 
   onSorted = (sortType, sortValue) => {
-    //  console.log(sortType, ' + ', sortValue);
     var sortData = {
       sortType: sortType,
       sortValue: sortValue

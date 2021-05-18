@@ -19,7 +19,6 @@ class TaskList extends Component {
       filterName: name === 'filterName' ? value : this.state.filterName,
       filterStatus: name === 'filterStatus' ? parseInt(value) : parseInt(this.state.filterStatus)
     };
-   // console.log(data);
     this.props.onFilter(data);
     this.setState({
       [name]: value

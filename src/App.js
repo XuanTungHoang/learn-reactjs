@@ -117,7 +117,6 @@ class App extends Component {
         this.setState({
           taskEditing: taskEditing,        
         });
-       // console.log(this.state.taskEditing);
       }
     });
     this.onShowForm();
@@ -125,7 +124,6 @@ class App extends Component {
   }
 
   onFilter = (data) => {
-   // console.log(data);
    if(data){
     this.setState({
       filterName: data.filterName.toLowerCase(),
@@ -145,7 +143,6 @@ class App extends Component {
     var currentDataSort = this.state.dataSort
     var flag = currentDataSort.sortType === dataSort.sortType && currentDataSort.sortValue === dataSort.sortValue ? true : false;
     if(!flag){
-      //console.log(dataSort);
       this.setState({
         dataSort: {
           sortType: dataSort.sortType,
@@ -169,7 +166,6 @@ class App extends Component {
           return task.status === (filterStatus === 1 ? true : false);
         }
       });
-      //console.log(filterName, ' + ', tasks);
     }else {
       tasks = tasks.filter((task) => {
         if(filterStatus === -1) {
@@ -178,7 +174,6 @@ class App extends Component {
           return task.status === (filterStatus === 1 ? true : false);
         }
       });
-      //console.log(filterStatus, ' + ', tasks);
     }
 
     if(keyword){

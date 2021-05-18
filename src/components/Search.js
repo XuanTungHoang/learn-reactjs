@@ -17,7 +17,6 @@ class Search extends Component {
   }
 
   onSearch = () => {
-    //console.log(this.state.keyword);
     this.props.onSearch(this.state.keyword);
   }
 

@@ -22,14 +22,12 @@ class TaskForm extends Component {
 
   componentDidUpdate(preProps){
     if(!this.props.task && preProps.task){
-      // console.log(preProps.task);
       this.setState({
         id: '',
         name: '',
         status: true
       });
     }else if (this.props.task !== preProps.task){
-      // console.log(this.props.task);
       this.setState({
         id: this.props.task.id,
         name: this.props.task.name,
