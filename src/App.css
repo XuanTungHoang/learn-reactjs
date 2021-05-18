@@ -45,6 +45,20 @@
   margin-left: 10px;
 }
 
-.mr-5 {
-  margin-right: 5px;
+.text-right {
+  float: right;
+  cursor: pointer;
+}
+
+.text-right:hover {
+  color: red;
+}
+
+.sort_selected::after {
+  content: '\f00c';
+  font-family: FontAweSome;
+  font-weight: normal;
+  font-style: normal;
+  margin: 0px 0px 0px 10px;
+  display: inline-block;
 }

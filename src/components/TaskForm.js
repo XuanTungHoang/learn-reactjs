@@ -17,9 +17,27 @@ class TaskForm extends Component {
         name: this.props.task.name,
         status: this.props.task.status
       });
-      //console.log(this.state);
     }
   }
+
+  componentDidUpdate(preProps){
+    if(!this.props.task && preProps.task){
+      // console.log(preProps.task);
+      this.setState({
+        id: '',
+        name: '',
+        status: true
+      });
+    }else if (this.props.task !== preProps.task){
+      // console.log(this.props.task);
+      this.setState({
+        id: this.props.task.id,
+        name: this.props.task.name,
+        status: this.props.task.status
+      });
+    }
+  }
+
   onChange = (event) => {
     var target = event.target;
     var name = target.name;
