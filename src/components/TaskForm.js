@@ -1,4 +1,7 @@
 import React, { Component } from "react";
+import {connect} from 'react-redux';
+import * as actions from '../actions/index'
+
 
 class TaskForm extends Component {
   constructor (props){
@@ -21,17 +24,17 @@ class TaskForm extends Component {
   }
 
   componentDidUpdate(preProps){
-    if(!this.props.task && preProps.task){
+    if(!this.props.editTask && preProps.editTask){
       this.setState({
         id: '',
         name: '',
         status: true
       });
-    }else if (this.props.task !== preProps.task){
+    }else if (this.props.editTask !== preProps.editTask){
       this.setState({
-        id: this.props.task.id,
-        name: this.props.task.name,
-        status: this.props.task.status
+        id: this.props.editTask.id,
+        name: this.props.editTask.name,
+        status: this.props.editTask.status
       });
     }
   }
@@ -47,24 +50,24 @@ class TaskForm extends Component {
 
   onSubmit = (event) => {
     event.preventDefault();
-    this.props.onSubmit(this.state);
-    this.onCancel();
+    //this.props.onSubmit(this.state);
+    this.props.onSaveTask(this.state);
     this.onCloseForm();
-  }
-
-  onCloseForm = () => {
-    this.props.onCloseForm();
   }
 
   onCancel = () => {
     this.setState({
       name: '',
       status: true
-    })
+    });
+  }
+  onCloseForm = () => {
+    this.props.onCloseForm();
   }
 
   render() {
     var {id} = this.state;
+    if(!this.props.isDisplayForm) return '';
     return (
     <div className="panel panel-warning">
         <div className="panel-heading">
@@ -100,4 +103,22 @@ class TaskForm extends Component {
   }
 }
 
-export default TaskForm;
+const mapStateToProps = (state) => {
+  return {
+    isDisplayForm: state.isDisplayForm,
+    editTask: state.editTask
+  }
+}
+
+const mapDispatchToProps = (dispatch, props) => {
+  return {
+    onSaveTask: (task) => {
+      dispatch(actions.saveTask(task));
+    },
+    onCloseForm: () => {
+      dispatch(actions.closeForm());
+    },
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps) (TaskForm);
