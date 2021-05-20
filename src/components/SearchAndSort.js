@@ -6,8 +6,8 @@ class SearchAndSort extends Component {
   render() {
     return (
       <div className="row mt-15">
-        <Search onSearch={this.props.onSearch} />
-        <Sort onSorted={this.props.onSorted} />
+        <Search />
+        <Sort />
       </div>
     );
   }

@@ -7,16 +7,19 @@ class TaskItem extends Component {
   onUpdateStatus = () => {
     this.props.onUpdateStatus(this.props.task.id);
   }
+  
   onDelete = () => {
     this.props.onDeleteTask(this.props.task.id);
     this.props.onCloseForm();
   }
+
   onEditTask = () => {
     this.props.onOpenForm();
     this.props.onEditTask(this.props.task);
   }
+  
   render() {
-    var {task, index} = this.props
+    var {task, index} = this.props;
     return (
       <tr>
         <td>{index + 1}</td>

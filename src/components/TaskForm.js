@@ -50,7 +50,6 @@ class TaskForm extends Component {
 
   onSubmit = (event) => {
     event.preventDefault();
-    //this.props.onSubmit(this.state);
     this.props.onSaveTask(this.state);
     this.onCloseForm();
   }
@@ -61,6 +60,7 @@ class TaskForm extends Component {
       status: true
     });
   }
+  
   onCloseForm = () => {
     this.props.onCloseForm();
   }

@@ -7,18 +7,6 @@ import {connect} from 'react-redux';
 import * as actions from './actions/index';
 
 class App extends Component {
-  constructor (props){
-    super(props);
-    this.state = {
-      filterName: '',
-      filterStatus: -1,
-      keyword: '',
-      dataSort: {
-        sortType: 'name',
-        sortValue: 1
-      }
-    }
-  }
 
   onToggleForm = () => {
     var {itemEditing} = this.props;
@@ -34,37 +22,7 @@ class App extends Component {
     });
   }
 
-  onFilter = (data) => {
-   if(data){
-    this.setState({
-      filterName: data.filterName.toLowerCase(),
-      filterStatus: data.filterStatus
-    });
-   }
-  }
-
-  onSearch = (keyword) => {
-    this.setState({
-      keyword: keyword.toLowerCase()
-    })
-  }
-
-  onSorted = (dataSort) => {
-   
-    var currentDataSort = this.state.dataSort
-    var flag = currentDataSort.sortType === dataSort.sortType && currentDataSort.sortValue === dataSort.sortValue ? true : false;
-    if(!flag){
-      this.setState({
-        dataSort: {
-          sortType: dataSort.sortType,
-          sortValue: dataSort.sortValue
-        }
-      });
-    }
-  }
-
   render() {
-    var {taskEditing, filterName, filterStatus, keyword, dataSort} = this.state // var tasks = this.state.tasks
     var {isDisplayForm} = this.props;
     return (
       <div className="container">
@@ -81,8 +39,8 @@ class App extends Component {
               <span className="fa fa-plus mr-5" />
               Thêm Công Việc
             </button>
-            <SearchAndSort onSearch={this.onSearch} onSorted={this.onSorted} />
-            <TaskList onFilter={this.onFilter} />
+            <SearchAndSort />
+            <TaskList />
           </div>
         </div>
       </div>

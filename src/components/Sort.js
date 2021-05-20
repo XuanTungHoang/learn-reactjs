@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import {connect} from 'react-redux';
+import * as actions from './../actions/index';
 
 class Sort extends Component {
   constructor(props) {
@@ -6,7 +8,7 @@ class Sort extends Component {
     this.state = {
       sortData: {
         sortType: "name",
-        sortValue: 1,
+        sortValue: 1
       },
     };
   }
@@ -16,7 +18,9 @@ class Sort extends Component {
       sortType: sortType,
       sortValue: sortValue
     }
-    if (sortData) {
+    var currentDataSort = this.state.sortData
+    var flag = currentDataSort.sortType === sortType && currentDataSort.sortValue === sortValue ? true : false;
+    if(!flag && sortData){
       this.props.onSorted(sortData);
       this.setState({
         sortData: sortData
@@ -96,4 +100,18 @@ class Sort extends Component {
   }
 }
 
-export default Sort;
+const mapStateToProps = (state) => {
+  return {
+    
+  };
+}
+
+const mapDispatchToProps = (dispatch, props) => {
+  return {
+    onSorted: (sortData) => {
+      dispatch(actions.sortData(sortData));
+    },
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps) (Sort);

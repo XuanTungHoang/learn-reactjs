@@ -16,8 +16,6 @@ var myReducer = (state = initialState, action) => {
         case types.ALL_TASK:
             return state;
         case types.SAVE_TASK:
-            // console.log(state);
-            // console.log(action);
             var newTask = {
                 id: action.task.id,
                 name: action.task.name,
@@ -36,7 +34,6 @@ var myReducer = (state = initialState, action) => {
             localStorage.setItem('tasks', JSON.stringify(state));
             return [...state];
         case types.UPDATE_STATUS:
-            console.log(action);
             var id = action.id;
             state.forEach((elm, index) => {
                 if(elm.id === id){
